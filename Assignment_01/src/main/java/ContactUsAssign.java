@@ -1,26 +1,14 @@
-import java.io.IOException;
 import java.time.Duration;
-import java.io.File;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.io.FileUtils;
-import org.junit.Assert;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ContactUs {
-	public static void main(String[] args) throws InterruptedException, IOException {
+public class ContactUsAssign {
+	public static void main(String[] args) throws InterruptedException {
 		
 		WebDriver driver = new ChromeDriver();
 		
@@ -31,9 +19,10 @@ public class ContactUs {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		Thread.sleep(35000);
 		
-		//alert for	
-		WebElement alert = driver.findElement(By.xpath("//button[@id='onesignal-slidedown-cancel-button']"));
-		alert.click();
+		//slidedown close	
+		WebElement slidedown = driver.findElement(By.xpath("//button[@id='onesignal-slidedown-cancel-button']"));
+		slidedown.click();
+		
 		
 		
 	    
@@ -54,7 +43,7 @@ public class ContactUs {
 
 		
 		//Country code
-		Select CountryCode = new Select (driver.findElement(By.xpath("//select[@class='p-2 pl-4 pr-4 m-2 mt-2 mb-2 form-control form-control-md']")));
+		Select CountryCode = new Select (driver.findElement(By.xpath("//select[starts-with(@class,'p-2')]")));
 		CountryCode.selectByVisibleText("India (+91)");
 		System.out.println("Country code has been enterd.");
 
